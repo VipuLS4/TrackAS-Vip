@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TrackAS Test</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 40px; }
+        .container { max-width: 800px; margin: 0 auto; }
+        .test-section { margin: 20px 0; padding: 20px; border: 1px solid #ddd; border-radius: 8px; }
+        .success { background-color: #d4edda; border-color: #c3e6cb; }
+        .error { background-color: #f8d7da; border-color: #f5c6cb; }
+        button { padding: 10px 20px; margin: 5px; background: #007bff; color: white; border: none; border-radius: 4px; cursor: pointer; }
+        button:hover { background: #0056b3; }
+        .result { margin-top: 10px; padding: 10px; background: #f8f9fa; border-radius: 4px; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>TrackAS Backend Test</h1>
+        
+        <div class="test-section">
+            <h3>1. Health Check</h3>
+            <button onclick="testHealth()">Test Health</button>
+            <div id="health-result" class="result"></div>
+        </div>
+
+        <div class="test-section">
+            <h3>2. Company Login</h3>
+            <button onclick="testCompanyLogin()">Test Company Login</button>
+            <div id="company-login-result" class="result"></div>
+        </div>
+
+        <div class="test-section">
+            <h3>3. Driver Login</h3>
+            <button onclick="testDriverLogin()">Test Driver Login</button>
+            <div id="driver-login-result" class="result"></div>
+        </div>
+
+        <div class="test-section">
+            <h3>4. Admin Login</h3>
+            <button onclick="testAdminLogin()">Test Admin Login</button>
+            <div id="admin-login-result" class="result"></div>
+        </div>
+
+        <div class="test-section">
+            <h3>5. Get Shipments</h3>
+            <button onclick="testShipments()">Test Shipments</button>
+            <div id="shipments-result" class="result"></div>
+        </div>
+
+        <div class="test-section">
+            <h3>6. Get Wallet</h3>
+            <button onclick="testWallet()">Test Wallet</button>
+            <div id="wallet-result" class="result"></div>
+        </div>
+    </div>
+
+    <script>
+        const API_BASE = 'http://localhost:4000';
+
+        async function testHealth() {
+            try {
+                const response = await fetch(`${API_BASE}/api/vercel-health`);
+                const data = await response.json();
+                document.getElementById('health-result').innerHTML = 
+                    `<div class="success">✅ Health Check Passed: ${JSON.stringify(data, null, 2)}</div>`;
+            } catch (error) {
+                document.getElementById('health-result').innerHTML = 
+                    `<div class="error">❌ Health Check Failed: ${error.message}</div>`;
+            }
+        }
+
+        async function testCompanyLogin() {
+            try {
+                const response = await fetch(`${API_BASE}/api/auth`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        action: 'login',
+                        userType: 'company',
+                        email: 'company@demo.com',
+                        password: 'password123'
+                    })
+                });
+                const data = await response.json();
+                document.getElementById('company-login-result').innerHTML = 
+                    `<div class="success">✅ Company Login: ${JSON.stringify(data, null, 2)}</div>`;
+            } catch (error) {
+                document.getElementById('company-login-result').innerHTML = 
+                    `<div class="error">❌ Company Login Failed: ${error.message}</div>`;
+            }
+        }
+
+        async function testDriverLogin() {
+            try {
+                const response = await fetch(`${API_BASE}/api/auth`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        action: 'login',
+                        userType: 'driver',
+                        email: 'driver@demo.com',
+                        password: 'password123'
+                    })
+                });
+                const data = await response.json();
+                document.getElementById('driver-login-result').innerHTML = 
+                    `<div class="success">✅ Driver Login: ${JSON.stringify(data, null, 2)}</div>`;
+            } catch (error) {
+                document.getElementById('driver-login-result').innerHTML = 
+                    `<div class="error">❌ Driver Login Failed: ${error.message}</div>`;
+            }
+        }
+
+        async function testAdminLogin() {
+            try {
+                const response = await fetch(`${API_BASE}/api/auth`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        action: 'login',
+                        userType: 'admin',
+                        email: 'admin@demo.com',
+                        password: 'password123'
+                    })
+                });
+                const data = await response.json();
+                document.getElementById('admin-login-result').innerHTML = 
+                    `<div class="success">✅ Admin Login: ${JSON.stringify(data, null, 2)}</div>`;
+            } catch (error) {
+                document.getElementById('admin-login-result').innerHTML = 
+                    `<div class="error">❌ Admin Login Failed: ${error.message}</div>`;
+            }
+        }
+
+        async function testShipments() {
+            try {
+                const response = await fetch(`${API_BASE}/api/shipments`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        action: 'list',
+                        companyId: '1',
+                        limit: 10
+                    })
+                });
+                const data = await response.json();
+                document.getElementById('shipments-result').innerHTML = 
+                    `<div class="success">✅ Shipments: ${JSON.stringify(data, null, 2)}</div>`;
+            } catch (error) {
+                document.getElementById('shipments-result').innerHTML = 
+                    `<div class="error">❌ Shipments Failed: ${error.message}</div>`;
+            }
+        }
+
+        async function testWallet() {
+            try {
+                const response = await fetch(`${API_BASE}/api/payments`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        action: 'wallet',
+                        userId: '1'
+                    })
+                });
+                const data = await response.json();
+                document.getElementById('wallet-result').innerHTML = 
+                    `<div class="success">✅ Wallet: ${JSON.stringify(data, null, 2)}</div>`;
+            } catch (error) {
+                document.getElementById('wallet-result').innerHTML = 
+                    `<div class="error">❌ Wallet Failed: ${error.message}</div>`;
+            }
+        }
+
+        // Auto-run health check on page load
+        window.onload = function() {
+            testHealth();
+        };
+    </script>
+</body>
+</html>
+
+
+
+

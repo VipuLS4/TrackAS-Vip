@@ -1,0 +1,62 @@
+{
+  "version": 2,
+  "buildCommand": "cd frontend && npm install && npm run build",
+  "outputDirectory": "frontend/.next",
+  "installCommand": "cd frontend && npm install",
+  "framework": "nextjs",
+  "functions": {
+    "api/**/*.js": {
+      "maxDuration": 30
+    }
+  },
+  "rewrites": [
+    {
+      "source": "/api/(.*)",
+      "destination": "/api/$1"
+    }
+  ],
+  "env": {
+    "NODE_ENV": "production",
+    "LOG_LEVEL": "info",
+    "INCLUDE_ERROR_STACK": "false",
+    "INCLUDE_ERROR_CONTEXT": "true",
+    "MAX_ERROR_HISTORY": "1000",
+    "ERROR_ALERT_THRESHOLD": "10",
+    "CIRCUIT_BREAKER_TIMEOUT": "60000",
+    "HEALTH_CHECK_INTERVAL": "30000",
+    "ERROR_RATE_THRESHOLD": "100"
+  },
+  "headers": [
+    {
+      "source": "/api/(.*)",
+      "headers": [
+        {
+          "key": "X-Content-Type-Options",
+          "value": "nosniff"
+        },
+        {
+          "key": "X-Frame-Options",
+          "value": "DENY"
+        },
+        {
+          "key": "X-XSS-Protection",
+          "value": "1; mode=block"
+        },
+        {
+          "key": "Referrer-Policy",
+          "value": "strict-origin-when-cross-origin"
+        }
+      ]
+    }
+  ],
+  "redirects": [
+    {
+      "source": "/health",
+      "destination": "/api/vercel-health",
+      "permanent": false
+    }
+  ],
+  "trailingSlash": false,
+  "cleanUrls": true,
+  "regions": ["iad1"]
+}

@@ -1,0 +1,41 @@
+version: '3.8'
+services:
+  backend:
+    build: ./backend
+    ports: ["4000:4000"]
+    environment:
+      - DATABASE_URL=postgresql://postgres:Vipul@1234@db.blskbxwcnixzttjhieuc.supabase.co:5432/postgres
+      - JWT_SECRET=f1b7e9b33514e98027694d18ffcf87e2ccce25e7da65a46adf6cc9ba7943dba2
+      - NODE_ENV=development
+      - FRONTEND_URL=http://localhost:3000
+      - DEFAULT_COMMISSION=5
+      - MAPBOX_KEY=pk.eyJ1Ijoic3BpY3ljaGFpciIsImEiOiJja2Y4b2RpemwwZTVrMnJxZzJmeXoxMHA5In0.7DxKkZ9CCFER4n-PkAooHQ
+      - OPENWEATHER_API_KEY=dd1571a8ad3fd44555e8a5d66db01929
+      - TWILIO_ACCOUNT_SID=your_twilio_account_sid_here
+      - TWILIO_AUTH_TOKEN=your_twilio_auth_token_here
+      - TWILIO_WHATSAPP_NUMBER=+14155238886
+      - TWILIO_SMS_NUMBER=+1234567890
+      - OPENAI_API_KEY=your_openai_api_key_here
+      - SENDGRID_API_KEY=your_sendgrid_api_key_here
+      - FROM_EMAIL=noreply@trackas.com
+    volumes:
+      - ./logs:/app/logs
+      - ./uploads:/app/uploads
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:4000/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+  frontend:
+    build: ./frontend
+    ports: ["3000:3000"]
+    depends_on:
+      backend:
+        condition: service_healthy
+    environment:
+      - NEXT_PUBLIC_API_BASE=http://localhost:4000
+      - NEXT_PUBLIC_MAPBOX_KEY=pk.eyJ1Ijoic3BpY3ljaGFpciIsImEiOiJja2Y4b2RpemwwZTVrMnJxZzJmeXoxMHA5In0.7DxKkZ9CCFER4n-PkAooHQ
+      - NODE_ENV=development
+    restart: unless-stopped

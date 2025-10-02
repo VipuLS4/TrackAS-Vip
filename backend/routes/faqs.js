@@ -1,0 +1,1 @@
+import express from 'express'; import { getFAQsByRole } from '../services/ai_bot.js'; const router=express.Router(); router.get('/',(req,res)=>{ const role=req.query.role||'customer'; res.json({ faqs:getFAQsByRole(role) }); }); export default router;

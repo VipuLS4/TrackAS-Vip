@@ -1,0 +1,1 @@
+TrackAS Final MVP Complete - includes backend, frontend, migrations, seed, docker-compose, env examples. Payments are demo stubs. Replace keys before running.

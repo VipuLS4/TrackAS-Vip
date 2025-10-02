@@ -1,0 +1,1 @@
+ALTER TABLE shipments ADD COLUMN IF NOT EXISTS operator_id UUID REFERENCES operators(id) ON DELETE SET NULL;
