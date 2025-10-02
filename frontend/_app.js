@@ -1,6 +1,7 @@
 import '../styles.css';
 import ChatWidget from './components/ChatWidget';
 import ErrorBoundary from './components/ErrorBoundary';
+import ToastContainer from './components/ui/ToastContainer';
 import { globalErrorHandler } from './utils/globalErrorHandlers.js';
 import { useEffect } from 'react';
 
@@ -19,6 +20,7 @@ export default function MyApp({ Component, pageProps }) {
     >
       <Component {...pageProps} />
       <ChatWidget />
+      <ToastContainer />
     </ErrorBoundary>
   );
 }
