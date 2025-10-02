@@ -44,15 +44,19 @@
   
   /* Gradient backgrounds */
   .gradient-primary {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: linear-gradient(135deg, #0ea5e9 0%, #0284c7 100%);
   }
   
   .gradient-secondary {
-    background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+    background: linear-gradient(135deg, #7dd3fc 0%, #38bdf8 100%);
+  }
+  
+  .gradient-accent {
+    background: linear-gradient(135deg, #c92aff 0%, #b01aff 100%);
   }
   
   .gradient-success {
-    background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+    background: linear-gradient(135deg, #22c55e 0%, #16a34a 100%);
   }
   
   /* Button variants */

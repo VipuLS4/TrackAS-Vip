@@ -44,7 +44,7 @@ export default function AdminLogin() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-warning-50 via-white to-primary-50 flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
+    <div className="min-h-screen bg-gradient-to-br from-primary-50 via-white to-accent-50 flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
       <motion.div 
         className="max-w-md w-full"
         initial={{ opacity: 0, y: 20 }}
@@ -102,7 +102,7 @@ export default function AdminLogin() {
                 className="w-full"
                 loading={loading}
                 disabled={loading}
-                variant="warning"
+                variant="primary"
               >
                 {loading ? 'Signing in...' : 'Sign in'}
                 <ArrowRight className="ml-2 h-5 w-5" />

@@ -50,7 +50,7 @@ export default function Home() {
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-primary-50 via-white to-secondary-50">
+    <div className="min-h-screen bg-gradient-to-br from-primary-50 via-white to-accent-50">
       <Header />
 
       {/* Hero Section */}
@@ -63,7 +63,7 @@ export default function Home() {
         >
           <h1 className="text-4xl font-bold text-gray-900 sm:text-5xl md:text-6xl lg:text-7xl">
             Track Your Shipments
-            <span className="block bg-gradient-to-r from-primary-600 to-secondary-600 bg-clip-text text-transparent">
+            <span className="block bg-gradient-to-r from-primary-600 to-accent-600 bg-clip-text text-transparent">
               Like Never Before
             </span>
           </h1>
@@ -214,10 +214,10 @@ export default function Home() {
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
-              <Card className="p-8 text-center hover:shadow-strong transition-all duration-300 group-hover:border-success-300">
+              <Card className="p-8 text-center hover:shadow-strong transition-all duration-300 group-hover:border-primary-300">
                 <CardContent>
-                  <div className="w-16 h-16 bg-success-100 rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:bg-success-200 transition-colors">
-                    <Truck className="h-8 w-8 text-success-600" />
+                  <div className="w-16 h-16 bg-primary-100 rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:bg-primary-200 transition-colors">
+                    <Truck className="h-8 w-8 text-primary-600" />
                   </div>
                   <h3 className="text-xl font-semibold text-gray-900 mb-2">
                     Driver Dashboard
@@ -225,7 +225,7 @@ export default function Home() {
                   <p className="text-gray-600 mb-4">
                     Accept jobs, update status, and manage deliveries
                   </p>
-                  <Button variant="outline" className="w-full border-success-600 text-success-600 hover:bg-success-600 hover:text-white">
+                  <Button variant="outline" className="w-full border-primary-600 text-primary-600 hover:bg-primary-600 hover:text-white">
                     Access Dashboard
                     <ArrowRight className="ml-2 h-4 w-4" />
                   </Button>
@@ -239,10 +239,10 @@ export default function Home() {
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
-              <Card className="p-8 text-center hover:shadow-strong transition-all duration-300 group-hover:border-warning-300">
+              <Card className="p-8 text-center hover:shadow-strong transition-all duration-300 group-hover:border-accent-300">
                 <CardContent>
-                  <div className="w-16 h-16 bg-warning-100 rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:bg-warning-200 transition-colors">
-                    <Shield className="h-8 w-8 text-warning-600" />
+                  <div className="w-16 h-16 bg-accent-100 rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:bg-accent-200 transition-colors">
+                    <Shield className="h-8 w-8 text-accent-600" />
                   </div>
                   <h3 className="text-xl font-semibold text-gray-900 mb-2">
                     Admin Panel
@@ -250,7 +250,7 @@ export default function Home() {
                   <p className="text-gray-600 mb-4">
                     Oversee operations, manage users, and view analytics
                   </p>
-                  <Button variant="outline" className="w-full border-warning-600 text-warning-600 hover:bg-warning-600 hover:text-white">
+                  <Button variant="outline" className="w-full border-accent-600 text-accent-600 hover:bg-accent-600 hover:text-white">
                     Access Panel
                     <ArrowRight className="ml-2 h-4 w-4" />
                   </Button>

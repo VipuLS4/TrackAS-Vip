@@ -44,7 +44,7 @@ export default function DriverLogin() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-success-50 via-white to-primary-50 flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
+    <div className="min-h-screen bg-gradient-to-br from-primary-50 via-white to-accent-50 flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
       <motion.div 
         className="max-w-md w-full"
         initial={{ opacity: 0, y: 20 }}
@@ -102,7 +102,7 @@ export default function DriverLogin() {
                 className="w-full"
                 loading={loading}
                 disabled={loading}
-                variant="success"
+                variant="primary"
               >
                 {loading ? 'Signing in...' : 'Sign in'}
                 <ArrowRight className="ml-2 h-5 w-5" />
@@ -111,7 +111,7 @@ export default function DriverLogin() {
               <div className="text-center">
                 <a 
                   href="/driver/register" 
-                  className="text-success-600 hover:text-success-700 font-medium transition-colors"
+                  className="text-primary-600 hover:text-primary-700 font-medium transition-colors"
                 >
                   Don't have an account? Register
                 </a>

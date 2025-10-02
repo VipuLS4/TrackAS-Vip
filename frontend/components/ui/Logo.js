@@ -38,7 +38,7 @@ const Logo = ({
         <Package className="h-3/4 w-3/4 text-white" />
       </div>
       {showText && (
-        <span className={`font-bold bg-gradient-to-r from-primary-600 to-secondary-600 bg-clip-text text-transparent ${sizeConfig.text}`}>
+        <span className={`font-bold bg-gradient-to-r from-primary-600 to-accent-600 bg-clip-text text-transparent ${sizeConfig.text}`}>
           TrackAS
         </span>
       )}
